@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जैन विशाल ग्रुह उद्योग - पारंपरिक भारतीय खाद्य पदार्थ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* हेडर */
+        header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* हीरो सेक्शन */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255, 255, 255, 0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50%) translateY(-50%); }
+            100% { transform: translateX(-50%) translateY(-60%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* अबाउट सेक्शन */
+        .about {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* प्रोडक्ट्स सेक्शन */
+        .products {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b35;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-image:not([src]) {
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23ddd"/%3E%3Ctext x="200" y="150" font-family="Noto Sans Devanagari" font-size="24" fill="%23666" text-anchor="middle" dy=".3em"%3Eछवि नहीं मिली%3C/text%3E%3C/svg%3E') center/cover;
+        }
+
+        /* कॉन्टैक्ट सेक्शन */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* फुटर */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* लाइटबॉक्स */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        #lightbox-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        #lightbox button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* रेस्पॉन्सिव डिज़ाइन */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form iframe {
+                height: 300px;
+            }
+        }
+
+        /* स्क्रॉल एनिमेशन */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- हेडर -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"> जैन विशाल ग्रुह उद्योग</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">होम</a></li>
+                        <li><a href="#about">हमारे बारे में</a></li>
+                        <li><a href="#products">उत्पाद</a></li>
+                        <li><a href="#contact">संपर्क करें</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- हीरो सेक्शन -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>जैन विशाल ग्रुह उद्योग</h1>
+                <div style="font-size: 1.8rem; font-weight: bold; margin: 1rem 0; color: #FFD700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                    अहमदाबाद का मशहूर नमकीन
+                </div>
+                <div style="font-size: 1.4rem; margin-bottom: 2rem; font-weight: 600; color: #FFF8DC;">
+                    एच.बी. कापड़िया वाले
+                </div>
+                <p>प्रामाणिक पारंपरिक भारतीय स्नैक्स - चवाना, घाठीया, रतलामी सेव और अधिक</p>
+                <a href="#products" class="cta-button">हमारे उत्पाद देखें</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- अबाउट सेक्शन -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h2>हमारी विरासत</h2>
+                    <p>जैन विशाल ग्रुह उद्योग - <strong>अहमदाबाद का मशहूर नमकीन, एच.बी. कापड़िया वाले</strong> में आपका स्वागत है। हम एक प्रसिद्ध पारिवारिक व्यवसाय हैं जो अहमदाबाद के लोगों को उच्च गुणवत्ता वाले पारंपरिक नमकीन और स्नैक्स प्रदान करते हैं।</p>
+                    <p>एच.बी. कापड़िया क्षेत्र के दिल में स्थित, हमने प्रामाणिक स्वाद, प्रीमियम गुणवत्ता वाली सामग्री और पीढ़ियों से परिष्कृत पारंपरिक व्यंजनों पर अपनी प्रतिष्ठा बनाई है।</p>
+                    <p>हमारी विशेषताएं में ऑल चवाना, घाठीया, रतलामी सेव और अहमदाबाद भर में हमें प्रसिद्ध करने वाले विभिन्न पारंपरिक नमकीन शामिल हैं। हर उत्पाद को सावधानी से बनाया जाता है, जो हमारे ग्राहकों द्वारा पसंद किए जाने वाले प्रामाणिक स्वाद को बनाए रखता है।</p>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff6b35;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23f7931e;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23grad1)'/%3E%3Ctext x='200' y='150' font-family='Noto Sans Devanagari' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3Eपारंपरिक खाद्य%3C/text%3E%3C/svg%3E" alt="पारंपरिक खाद्य">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- प्रोडक्ट्स सेक्शन -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">हमारे उत्पाद</h2>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <img src="./chawanajpg.jpg" alt="चवाना स्नैक" class="product-image" loading="lazy">
+                    <h3>चवाना</h3>
+                    <p>उच्च गुणवत्ता वाला चवाना, सबसे अच्छी सामग्री से बना, कुरकुरा और पारंपरिक स्वाद से भरपूर जो मुंह में घुल जाए।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./gathiya.jpg" alt="गुजराती गाठीया स्नैक" class="product-image" loading="lazy">
+                    <h3>गाठीया</h3>
+                    <p>प्रामाणिक गुजराती गाठीया - कुरकुरा, क्रंची बेसन का स्नैक, पारंपरिक मसालों और विधियों से तैयार।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./ratlami.jpg" alt="रतलामी सेव" class="product-image" loading="lazy">
+                    <h3>रतलामी सेव</h3>
+                    <p>प्रसिद्ध मसालेदार रतलामी सेव, सही मसालों के मिश्रण के साथ, रतलम की विशेषता का प्रामाणिक स्वाद।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./pudin.jpg" alt="पुदीना सेव स्नैक" class="product-image" loading="lazy">
+                    <h3>पुदीना सेव</h3>
+                    <p>ताज़ा पुदीना स्वाद वाली सेव, प्रीमियम सामग्री से तैयार, अनोखा और तीखा स्वाद।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./masalapuri.jpg" alt="मसाला पूरी स्नैक" class="product-image" loading="lazy">
+                    <h3>मसाला पूरी</h3>
+                    <p>कुरकुरी पूरियां मसाले के गहरे मिश्रण के साथ, स्नैक के रूप में या चटनी के साथ परफेक्ट।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./chakri.jpg" alt="चकरी स्नैक" class="product-image" loading="lazy">
+                    <h3>चकरी</h3>
+                    <p>पारंपरिक सर्पिल आकार का स्नैक, चावल के आटे और मसालों से बना, कुरकुरा स्वाद।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./product-jpeg.jpg" alt="केला वेफर" class="product-image" loading="lazy">
+                    <h3>केला वेफर</h3>
+                    <p>सेंधा नमक वाला उपवास में खाया जाने वाला कुरकुरा केले का वेफर।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./Spicy-Farali-Chevdo.jpg" alt="फराली चेवड़ा" class="product-image" loading="lazy">
+                    <h3>फराली चेवड़ा</h3>
+                    <p>उपवास के लिए बना सूखा मिश्रण, जिसमें आलू वेफर, मूंगफली और सेंधा नमक होता है।</p>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="./diwali.jpg" alt="त्योहारी विशेष" class="product-image" loading="lazy">
+                    <h3>त्योहारी विशेष</h3>
+                    <p>त्योहारों, उत्सवों और प्रियजनों के साथ साझा करने के लिए विशेष कॉम्बो पैक और गिफ्ट बॉक्स।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- कॉन्टैक्ट सेक्शन -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">संपर्क करें</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>संपर्क जानकारी</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>पता:</strong><br>
+                            दुकान नं.: 31, शांतिनिकेतन कॉम्प्लेक्स, एच.बी. कापड़िया के पास, गुरुकुल, अहमदाबाद, गुजरात, भारत, 380052
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>फोन:</strong><br>
+                            +91 79908 41583
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>ईमेल:</strong><br>
+                            jvscenter2909@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>व्यापारिक समय:</strong><br>
+                            सोम - रवि: सुबह 7:00 बजे - शाम 10:00 बजे
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.0602481174437!2d72.53041557514165!3d23.05825267914875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84a7f68aeb49%3A0x38b60fc41f8c2abb!2sJain%20Vishal%20Gruh%20Udhyog%20%26%20Bakery!5e0!3m2!1sen!2sin!4v1750220173049!5m2!1sen!2sin" width="600" height="450" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- फुटर -->
+    <footer>
+        <div class="container">
+            <p>© 2025 जैन विशाल ग्रुह उद्योग। सर्वाधिकार सुरक्षित। | पारंपरिक भारतीय व्यंजनों के लिए ❤️ के साथ बनाया गया</p>
+            <p id="datetime"></p>
+        </div>
+    </footer>
+
+    <!-- लाइटबॉक्स -->
+    <div id="lightbox">
+        <img id="lightbox-image">
+        <button onclick="closeLightbox()">बंद करें</button>
+    </div>
+
+    <script>
+        // स्मूथ स्क्रॉलिंग के लिए नेविगेशन लिंक
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // स्क्रॉल पर फेड-इन एनिमेशन
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // हेडर बैकग्राउंड पर स्क्रॉल परिवर्तन
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(255, 107, 53, 0.95), rgba(247, 147, 30, 0.95))';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #ff6b35, #f7931e)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // लाइटबॉक्स कार्यक्षमता
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            lightboxImage.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        document.querySelectorAll('.product-image').forEach(img => {
+            img.addEventListener('click', () => openLightbox(img.src));
+        });
+
+        // डायनामिक तारीख और समय
+        function updateDateTime() {
+            const now = new Date();
+            const options = { timeZone: 'Asia/Kolkata', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit', day: '2-digit', month: 'long', year: 'numeric', weekday: 'long' };
+            document.getElementById('datetime').textContent = `वर्तमान समय: ${now.toLocaleString('hi-IN', options)} IST`;
+        }
+        setInterval(updateDateTime, 1000); // हर सेकंड अपडेट
+    </script>
+</body>
+</html>
